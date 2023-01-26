@@ -6,6 +6,7 @@
 #include <SDL_mixer.h>
 #include <chrono>
 #include <map>
+#include <string>
 using namespace std;
 
 #define WIDTH 1024
@@ -34,10 +35,13 @@ private:
 	bool m_isRunning;
 	
 	// Audio Settings
-	Mix_Chunk* m_pSound1;
-	Mix_Chunk* m_pSound2;
-	Mix_Music* m_pMusic1;
-	Mix_Music* m_pMusic2;
+	//Mix_Chunk* m_pSound1;
+	//Mix_Chunk* m_pSound2;
+	//Mix_Music* m_pMusic1;
+	//Mix_Music* m_pMusic2;
+	map<string, Mix_Chunk*> m_sfx; // Golding to hold the Sound Effects
+	map<string, Mix_Music*> m_music; // Golding to hold the Music
+
 
 	// Example-specific properties.
 

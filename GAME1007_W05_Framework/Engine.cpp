@@ -63,15 +63,15 @@ int Engine::Init(const char* title, const int xPos, const int yPos,
 		// New Way
 		m_sfx.emplace("Sound1", Mix_LoadWAV("../Assets/aud/Sound1.wav") );
 		m_sfx.emplace("Sound2", Mix_LoadWAV("../Assets/aud/Sound2.wav") );
-		m_music.emplace("Music1", Mix_LoadWAV("../Assets/aud/Music1.mp3"));
-		m_music.emplace("Music2", Mix_LoadWAV("../Assets/aud/Music2.mp3"));
+		m_music.emplace("Music1", Mix_LoadMUS("../Assets/aud/Music1.mp3"));
+		m_music.emplace("Music2", Mix_LoadMUS("../Assets/aud/Music2.mp3"));
 
 	}
 	else return 1; // Mixer init failed.
 	// Initialize SDL sublibraries.
 	
 	// Example-specific initialization
-	//STMA::ChangeState(new TitleState()); // We'll uncomment this later.
+	STMA::PushState(new TitleState());
 	// Initialize rest of framework.
 	Mix_VolumeMusic(16); // 0-128.
 	Mix_PlayMusic(m_music["Music1"], -1);
@@ -84,7 +84,6 @@ int Engine::Init(const char* title, const int xPos, const int yPos,
 
 void Engine::HandleEvents()
 {
-	cout << "Handling events..." << endl;
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -94,11 +93,12 @@ void Engine::HandleEvents()
 			m_isRunning = false; // Tell Run() we're done.
 			break;
 		case SDL_KEYDOWN:
-			if(event.key.keysym.scancode == SDL_SCANCODE_1)
+			if (event.key.keysym.scancode == SDL_SCANCODE_1)
 				Mix_PlayChannel(-1, m_sfx["Sound1"], 0);
 			if (event.key.keysym.scancode == SDL_SCANCODE_2)
 				Mix_PlayChannel(-1, m_sfx["Sound2"], 0);
 			break;
+
 		}
 	}
 }
@@ -136,7 +136,6 @@ Engine& Engine::Instance() // this is the static method.
 
 void Engine::Update()
 {
-	cout << "Updating frame..." << endl;
 	STMA::Update();
 }
 
@@ -152,7 +151,6 @@ void Engine::Sleep()
 
 void Engine::Render()
 {
-	cout << "Rendering changes..." << endl;
 	STMA::Render();
 }
 

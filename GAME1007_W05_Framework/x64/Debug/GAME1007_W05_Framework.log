@@ -1,6 +1,4 @@
 ﻿  Engine.cpp
-C:\Users\Phili\Desktop\Semester 6.0\GAME1017 - Fundamentals II\Lab1\LE1_HendersonPhilip\GAME1007_W05_Framework\Engine.cpp(77,33): error C2660: 'Mix_PlayMusic': function does not take 1 arguments
-C:\Users\Phili\Desktop\Semester 6.0\GAME1017 - Fundamentals II\Lab1\LE1_HendersonPhilip\SDL\SDL2_mixer\include\SDL_mixer.h(1812,29): message : see declaration of 'Mix_PlayMusic'
-  Main.cpp
   States.cpp
   Generating Code...
+  GAME1007_W05_Framework.vcxproj -> C:\Users\Phili\Desktop\Semester 6.0\GAME1017 - Fundamentals II\Lab1\LE1_HendersonPhilip\Bin\GAME1007_W05_Framework.exe

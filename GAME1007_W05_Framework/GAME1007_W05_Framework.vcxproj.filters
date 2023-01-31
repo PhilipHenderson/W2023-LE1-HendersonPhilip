@@ -40,21 +40,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Assets\img\background.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\Assets\img\ship.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="..\Assets\aud\guile.mp3">
+    <Media Include="..\Assets\aud\Music1.mp3">
       <Filter>Resource Files</Filter>
     </Media>
-    <Media Include="..\Assets\aud\jump.wav">
+    <Media Include="..\Assets\aud\Music2.mp3">
       <Filter>Resource Files</Filter>
     </Media>
-    <Media Include="..\Assets\aud\slacker.wav">
+    <Media Include="..\Assets\aud\Sound2.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>

@@ -152,13 +152,9 @@
     <ClInclude Include="States.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Assets\img\background.png" />
-    <Image Include="..\Assets\img\ship.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="..\Assets\aud\guile.mp3" />
-    <Media Include="..\Assets\aud\jump.wav" />
-    <Media Include="..\Assets\aud\slacker.wav" />
+    <Media Include="..\Assets\aud\Music1.mp3" />
+    <Media Include="..\Assets\aud\Music2.mp3" />
+    <Media Include="..\Assets\aud\Sound2.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

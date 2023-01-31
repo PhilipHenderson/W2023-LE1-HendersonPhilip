@@ -53,19 +53,6 @@ int Engine::Init(const char* title, const int xPos, const int yPos,
 	{
 		Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 2048);
 		Mix_AllocateChannels(16);
-
-		//Old Way
-		//m_pSound1 = Mix_LoadWAV("../Assets/aud/Sound1.wav");
-		//m_pSound2 = Mix_LoadWAV("../Assets/aud/Sound2.wav");
-		//m_pMusic1 = Mix_LoadMUS("../Assets/aud/Music1.mp3");
-		//m_pMusic2 = Mix_LoadMUS("../Assets/aud/Music2.mp3");
-		
-		// New Way
-		m_sfx.emplace("Sound1", Mix_LoadWAV("../Assets/aud/Sound1.wav") );
-		m_sfx.emplace("Sound2", Mix_LoadWAV("../Assets/aud/Sound2.wav") );
-		m_music.emplace("Music1", Mix_LoadMUS("../Assets/aud/Music1.mp3"));
-		m_music.emplace("Music2", Mix_LoadMUS("../Assets/aud/Music2.mp3"));
-
 	}
 	else return 1; // Mixer init failed.
 	// Initialize SDL sublibraries.
@@ -73,8 +60,6 @@ int Engine::Init(const char* title, const int xPos, const int yPos,
 	// Example-specific initialization
 	STMA::PushState(new TitleState());
 	// Initialize rest of framework.
-	Mix_VolumeMusic(16); // 0-128.
-	Mix_PlayMusic(m_music["Music1"], -1);
 	m_fps = 1.0 / (double)FPS; // Converts FPS into a fraction of seconds.
 	m_pKeystates = SDL_GetKeyboardState(nullptr);
 	lastFrameTime = chrono::high_resolution_clock::now();
@@ -92,13 +77,6 @@ void Engine::HandleEvents()
 		case SDL_QUIT: // Pressing 'X' icon in SDL window.
 			m_isRunning = false; // Tell Run() we're done.
 			break;
-		case SDL_KEYDOWN:
-			if (event.key.keysym.scancode == SDL_SCANCODE_1)
-				Mix_PlayChannel(-1, m_sfx["Sound1"], 0);
-			if (event.key.keysym.scancode == SDL_SCANCODE_2)
-				Mix_PlayChannel(-1, m_sfx["Sound2"], 0);
-			break;
-
 		}
 	}
 }
@@ -134,6 +112,7 @@ Engine& Engine::Instance() // this is the static method.
 	return instance;
 }
 
+
 void Engine::Update()
 {
 	STMA::Update();
@@ -160,20 +139,7 @@ void Engine::Clean()
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	Mix_CloseAudio();
-	//for (auto const& i : m_sfx)
-	//{
-	//	Mix_FreeChunk(i.second);
-	//}
-	//for (auto const& i : m_music)
-	//{
-	//	Mix_FreeMusic(i.second);
-	//}
-	Mix_FreeChunk(m_sfx["Sound1"]);
-	Mix_FreeChunk(m_sfx["Sound2"]);
-	Mix_FreeMusic(m_music["Music1"]);
-	Mix_FreeMusic(m_music["Music2"]);
-	m_sfx.clear();
-	Mix_CloseAudio();
+
 	Mix_Quit();
 	STMA::Quit();
 	SDL_Quit();

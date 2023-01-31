@@ -34,13 +34,9 @@ private:
 	SDL_Renderer* m_pRenderer; // Pointer to "back buffer"
 	bool m_isRunning;
 	
-	// Audio Settings
-	//Mix_Chunk* m_pSound1;
-	//Mix_Chunk* m_pSound2;
-	//Mix_Music* m_pMusic1;
-	//Mix_Music* m_pMusic2;
-	map<string, Mix_Chunk*> m_sfx; // Golding to hold the Sound Effects
-	map<string, Mix_Music*> m_music; // Golding to hold the Music
+	// Audio
+	//map<string, Mix_Chunk*> m_sfx; // Going to hold the Sound Effects
+	//map<string, Mix_Music*> m_music; // Going to hold the Music
 
 
 	// Example-specific properties.
